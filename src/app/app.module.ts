@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { GameModule } from './game/game.module';
 
 import { AppComponent } from './app.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    GameModule
   ],
   providers: [],
   bootstrap: [AppComponent]
