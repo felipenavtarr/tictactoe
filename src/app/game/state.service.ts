@@ -3,7 +3,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export interface State {
   turn: string,
-  values: string[][]
+  values: string[][],
+  movements: number
 }
 
 @Injectable({
@@ -16,12 +17,13 @@ export class StateService {
   constructor() { 
 
 	  let initialState = {
-	    turn: 'PLAYERX',
+	    turn: 'PLAYER X',
 	    values: [
 	      ['-','-','-'],
 	      ['-','-','-'],
 	      ['-','-','-']
-	    ]
+      ],
+      movements: 0
 	  };
 
 	  this._state$ = new BehaviorSubject(initialState);
@@ -42,10 +44,11 @@ export class StateService {
   
   updateValue(row, col) {
     if(this.state.values[row][col] === '-') {
-      let newValue = this.state.turn === 'PLAYERX' ? 'X' : '0';
-      let newTurn = this.state.turn === 'PLAYERX' ? 'PLAYER0' : 'PLAYERX';
+      let newValue = this.state.turn === 'PLAYER X' ? 'X' : '0';
+      let newTurn = this.state.turn === 'PLAYER X' ? 'PLAYER 0' : 'PLAYER X';
       this.state.values[row][col] = newValue;
       this.state.turn = newTurn;
+      this.state.movements++;
       this._state$.next(this.state);
     }
   }
@@ -53,12 +56,13 @@ export class StateService {
   
   reset() {
     this.state = {
-      turn: 'PLAYERX',
+      turn: 'PLAYER X',
       values: [
         ['-','-','-'],
         ['-','-','-'],
         ['-','-','-']
-      ]
+      ],
+      movements: 0
     };
   }
 }
