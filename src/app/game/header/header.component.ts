@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(stateService:StateService) {
     this._stateService = stateService;
+    console.log("de header:" + this._stateService.state.isVictory);
    }
 
   ngOnInit() {

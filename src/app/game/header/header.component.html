@@ -1,3 +1,9 @@
-<p>
+<p *ngIf="!(_stateService.state$ | async).isVictory; else winGame">
   Turn of {{ (_stateService.state$ | async).turn }}
 </p>
+
+<ng-template #winGame>
+  <p>
+    There is a winner, {{ (_stateService.state$ | async).turn }}
+  </p>
+</ng-template>
