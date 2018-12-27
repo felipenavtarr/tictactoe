@@ -1,3 +1,4 @@
+<!-- Se comprueba el flag de victoria de stateService, para mostrar una vista u otra  -->
 <p *ngIf="!(_stateService.state$ | async).isVictory; else winGame">
   Turn of {{ (_stateService.state$ | async).turn }}
 </p>

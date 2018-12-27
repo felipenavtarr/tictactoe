@@ -1,1 +1,2 @@
+<!-- Se añade la comprobación del flag de victoria de stateService, para hacer los cuadros no clickables si hay ganador -->
 <button [class.clickable]="_stateService.state.values[row][column] === '-' && !_stateService.state.isVictory" [class.not-clickable]="_stateService.state.values[row][column] !== '-' || _stateService.state.isVictory"  (click)="_handleSquareClick()"> {{ (_stateService.state$ | async).values[row][column] }} </button>
